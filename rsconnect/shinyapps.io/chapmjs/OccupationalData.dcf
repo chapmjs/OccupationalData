@@ -1,0 +1,13 @@
+name: OccupationalData
+title: OccupationalData
+username:
+account: chapmjs
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 918580
+bundleId: 2070438
+url: https://chapmjs.shinyapps.io/OccupationalData/
+when: 1557343599.54217
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Occupational-Data.xlsx

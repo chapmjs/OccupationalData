@@ -11,6 +11,8 @@
 
 library(shiny)
 library(DT)
+library(dplyr)
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -21,14 +23,15 @@ ui <- fluidPage(
     # Sidebar with a slider input to choose an order by field 
     sidebarLayout(
         sidebarPanel(
-            selectInput("orderby",
-                        "Order by:",
-                        factor(names(occ_data)))
+            selectInput("filterby",
+                        "Filter by:",
+                        c("Line item","Summary"),selected = "Line item"),
+            width = 3
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-            DT::renderDataTable(occ_data)
+            DT::dataTableOutput("occupationalData")
         )
     )
 )
@@ -36,8 +39,8 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
-    output$dataTableOutput <- DT::renderDataTable({
-        occ_data
+    output$occupationalData = DT::renderDataTable({
+        occ_data %>% filter(occ_type == input$filterby)
     })
 }
 
