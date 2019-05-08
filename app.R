@@ -12,6 +12,14 @@
 library(shiny)
 library(DT)
 library(dplyr)
+library(readxl)
+
+#occ_data <- read_excel("~/R/OccupationalData/Occupational-Data.xlsx")
+occ_data <- read_excel("Occupational-Data.xlsx")
+
+names.col <- c("occupation","occ_code","occ_type","2014employment","2024employment","numIncrease","perInc","selfEmpl","growRep","medWage","entryEd","exper","ojt")
+names(occ_data) <- names.col
+
 
 
 # Define UI for application that draws a histogram
